@@ -1,0 +1,50 @@
+// 程序5：使用指针实现链表的插入和删除
+struct node {
+  int data;
+  struct node *next;
+};
+
+struct node *head = NULL;
+
+void insert(int x) {
+  struct node *new_node = (struct node *)malloc(sizeof(struct node));
+  new_node->data = x;
+  new_node->next = head;
+  head = new_node;
+}
+
+void delete(int x) {
+  struct node *prev = NULL;
+  struct node *curr = head;
+  while (curr != NULL) {
+    if (curr->data == x) {
+      if (prev == NULL) {
+        head = curr->next;
+      } else {
+        prev->next = curr->next;
+      }
+      free(curr);
+      return;
+    }
+    prev = curr;
+    curr = curr->next;
+  }
+}
+
+void print() {
+  struct node *curr = head;
+  while (curr != NULL) {
+    putint(curr->data);
+    curr = curr->next;
+  }
+}
+
+int main() {
+  insert(1);
+  insert(2);
+  insert(3);
+  print();
+  delete(2);
+  print();
+  return 0;
+}

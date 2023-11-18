@@ -1,0 +1,25 @@
+// 程序4：使用数组实现冒泡排序
+void swap(int *a, int *b) {
+  int tmp = *a;
+  *a = *b;
+  *b = tmp;
+}
+
+void bubble_sort(int a[], int n) {
+  for (int i = 0; i < n - 1; i++) {
+    for (int j = 0; j < n - i - 1; j++) {
+      if (a[j] > a[j + 1]) {
+        swap(&a[j], &a[j + 1]);
+      }
+    }
+  }
+}
+
+int main() {
+  int a[10] = {5, 3, 8, 2, 9, 1, 4, 7, 6, 0};
+  bubble_sort(a, 10);
+  for (int i = 0; i < 10; i++) {
+    putint(a[i]);
+  }
+  return 0;
+}

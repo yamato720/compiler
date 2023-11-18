@@ -1,0 +1,6 @@
+// 程序1：输出一个整数
+int main() {
+  int x = 42;
+  x=getint();
+  return 0;
+}
